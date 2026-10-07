@@ -25,4 +25,4 @@ RETURN DISTINCT h.name
 MATCH(comp:Company)<-[w:WORKED_AT]-(r:Resume)
 WITH comp, collect(DISTINCT r.full_name) as people
 WHERE size(people) > 1
-RETURN DISTINCT comp.name as company, collect(DISTINCT people) as people
+RETURN comp.name as company, people
