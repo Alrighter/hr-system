@@ -1,0 +1,1084 @@
+db = db.getSiblingDB('hr_embedded');
+db.dropDatabase();
+
+db.cities.insertMany([
+  {"_id": 1, "name": "Київ"},
+  {"_id": 2, "name": "Львів"},
+  {"_id": 3, "name": "Харків"},
+  {"_id": 4, "name": "Одеса"},
+  {"_id": 5, "name": "Дніпро"},
+  {"_id": 6, "name": "Івано-Франківськ"}
+]);
+db.companies.insertMany([
+  {"_id": 1, "name": "SoftServe"},
+  {"_id": 2, "name": "EPAM"},
+  {"_id": 3, "name": "GlobalLogic"},
+  {"_id": 4, "name": "Ciklum"},
+  {"_id": 5, "name": "Intellias"},
+  {"_id": 6, "name": "N-iX"},
+  {"_id": 7, "name": "MacPaw"}
+]);
+
+db.users.insertMany([
+{
+  "_id": 1,
+  "login": "olena.kovalenko",
+  "password_hash": "2b0b202c65c2c9194d3f69cc1c6a249344b895fcb1b33828f854187d9dd46dd7",
+  "resume": {
+    "full_name": "Олена Коваленко",
+    "birth_date": "1988-01-24",
+    "summary": "Олена шукає нову роль в IT.",
+    "city": {
+      "_id": 3,
+      "name": "Харків"
+    },
+    "hobbies": [
+      "фотографія",
+      "шахи"
+    ],
+    "experience": [
+      {
+        "company_id": 5,
+        "company": "Intellias",
+        "position": "Project Manager",
+        "start": "2020-02-01",
+        "end": "2023-02-01"
+      },
+      {
+        "company_id": 2,
+        "company": "EPAM",
+        "position": "QA Engineer",
+        "start": "2023-02-01",
+        "end": null
+      }
+    ]
+  }
+},
+{
+  "_id": 2,
+  "login": "andrii.shevchenko",
+  "password_hash": "465ba61f132ef2ec75b12f880deac1244ffc4a2f718abf0e2d3aa9e8329f8478",
+  "resume": {
+    "full_name": "Андрій Шевченко",
+    "birth_date": "2001-10-01",
+    "summary": "Андрій шукає нову роль в IT.",
+    "city": {
+      "_id": 5,
+      "name": "Дніпро"
+    },
+    "hobbies": [
+      "велоспорт",
+      "читання"
+    ],
+    "experience": [
+      {
+        "company_id": 7,
+        "company": "MacPaw",
+        "position": "Senior .NET Developer",
+        "start": "2016-08-01",
+        "end": "2018-01-01"
+      },
+      {
+        "company_id": 2,
+        "company": "EPAM",
+        "position": "QA Engineer",
+        "start": "2018-01-01",
+        "end": "2021-05-01"
+      },
+      {
+        "company_id": 1,
+        "company": "SoftServe",
+        "position": "Project Manager",
+        "start": "2021-05-01",
+        "end": "2023-02-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 3,
+  "login": "mariia.bondarenko",
+  "password_hash": "38d431a23f4327c990c96f2dc8ca8ddcda25f64ef618d63e8976a63c3fd08813",
+  "resume": {
+    "full_name": "Марія Бондаренко",
+    "birth_date": "1988-06-28",
+    "summary": "Марія шукає нову роль в IT.",
+    "city": {
+      "_id": 3,
+      "name": "Харків"
+    },
+    "hobbies": [
+      "гітара",
+      "кулінарія",
+      "настільні ігри",
+      "теніс"
+    ],
+    "experience": [
+      {
+        "company_id": 5,
+        "company": "Intellias",
+        "position": "Data Engineer",
+        "start": "2015-07-01",
+        "end": "2018-11-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 4,
+  "login": "dmytro.tkachenko",
+  "password_hash": "05437adb71fcd0e812d5cf8fc15b213c527b3f8e48b589d6f5cd89529c0c8ebe",
+  "resume": {
+    "full_name": "Дмитро Ткаченко",
+    "birth_date": "1991-12-03",
+    "summary": "Дмитро шукає нову роль в IT.",
+    "city": {
+      "_id": 1,
+      "name": "Київ"
+    },
+    "hobbies": [
+      "біг",
+      "кулінарія",
+      "фотографія",
+      "читання"
+    ],
+    "experience": [
+      {
+        "company_id": 2,
+        "company": "EPAM",
+        "position": "Data Engineer",
+        "start": "2016-02-01",
+        "end": "2018-06-01"
+      },
+      {
+        "company_id": 6,
+        "company": "N-iX",
+        "position": "Middle .NET Developer",
+        "start": "2018-06-01",
+        "end": "2020-05-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 5,
+  "login": "iryna.kravchenko",
+  "password_hash": "0e2a38dbaa612e38c62cae32cd20a4e0c40a25dba1258128a9efa7f5e7f4b060",
+  "resume": {
+    "full_name": "Ірина Кравченко",
+    "birth_date": "1990-09-24",
+    "summary": "Ірина шукає нову роль в IT.",
+    "city": {
+      "_id": 2,
+      "name": "Львів"
+    },
+    "hobbies": [
+      "гітара",
+      "читання"
+    ],
+    "experience": [
+      {
+        "company_id": 7,
+        "company": "MacPaw",
+        "position": "Junior .NET Developer",
+        "start": "2017-11-01",
+        "end": "2020-06-01"
+      },
+      {
+        "company_id": 4,
+        "company": "Ciklum",
+        "position": "Frontend Developer",
+        "start": "2020-06-01",
+        "end": "2021-06-01"
+      },
+      {
+        "company_id": 5,
+        "company": "Intellias",
+        "position": "Data Engineer",
+        "start": "2021-06-01",
+        "end": "2022-04-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 6,
+  "login": "oleksandr.melnyk",
+  "password_hash": "de11d7a824833e13278e8ae47a22cac746784a33af15c2b49cc24df95c7b1747",
+  "resume": {
+    "full_name": "Олександр Мельник",
+    "birth_date": "1991-11-16",
+    "summary": "Олександр шукає нову роль в IT.",
+    "city": {
+      "_id": 4,
+      "name": "Одеса"
+    },
+    "hobbies": [
+      "біг",
+      "гітара",
+      "кулінарія",
+      "шахи"
+    ],
+    "experience": [
+      {
+        "company_id": 4,
+        "company": "Ciklum",
+        "position": "Project Manager",
+        "start": "2016-12-01",
+        "end": "2019-10-01"
+      },
+      {
+        "company_id": 5,
+        "company": "Intellias",
+        "position": "Business Analyst",
+        "start": "2019-10-01",
+        "end": "2021-03-01"
+      },
+      {
+        "company_id": 7,
+        "company": "MacPaw",
+        "position": "Middle .NET Developer",
+        "start": "2021-03-01",
+        "end": "2022-01-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 7,
+  "login": "nataliia.oliinyk",
+  "password_hash": "019cdfd1be2535ebc1c520347015c836d7beea1178f57b0b2e77d578715b8a99",
+  "resume": {
+    "full_name": "Наталія Олійник",
+    "birth_date": "1989-11-06",
+    "summary": "Наталія шукає нову роль в IT.",
+    "city": {
+      "_id": 6,
+      "name": "Івано-Франківськ"
+    },
+    "hobbies": [
+      "біг",
+      "настільні ігри",
+      "читання"
+    ],
+    "experience": [
+      {
+        "company_id": 7,
+        "company": "MacPaw",
+        "position": "Junior .NET Developer",
+        "start": "2018-10-01",
+        "end": "2021-09-01"
+      },
+      {
+        "company_id": 5,
+        "company": "Intellias",
+        "position": "Frontend Developer",
+        "start": "2021-09-01",
+        "end": "2024-11-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 8,
+  "login": "serhii.shevchuk",
+  "password_hash": "f91c20409ebc34dfe8caae0f96bd10aa7dffe055ee5280eb8c548f5fceab5df7",
+  "resume": {
+    "full_name": "Сергій Шевчук",
+    "birth_date": "1995-02-10",
+    "summary": "Сергій шукає нову роль в IT.",
+    "city": {
+      "_id": 4,
+      "name": "Одеса"
+    },
+    "hobbies": [
+      "гітара",
+      "теніс"
+    ],
+    "experience": [
+      {
+        "company_id": 1,
+        "company": "SoftServe",
+        "position": "Frontend Developer",
+        "start": "2020-12-01",
+        "end": "2023-09-01"
+      },
+      {
+        "company_id": 2,
+        "company": "EPAM",
+        "position": "Data Engineer",
+        "start": "2023-09-01",
+        "end": "2026-04-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 9,
+  "login": "yuliia.polishchuk",
+  "password_hash": "c12574a1900b5c331f45c5c9f87dc9071775bdce6d5072a4e79054433be9bb39",
+  "resume": {
+    "full_name": "Юлія Поліщук",
+    "birth_date": "1990-09-25",
+    "summary": "Юлія шукає нову роль в IT.",
+    "city": {
+      "_id": 5,
+      "name": "Дніпро"
+    },
+    "hobbies": [
+      "настільні ігри",
+      "подорожі"
+    ],
+    "experience": [
+      {
+        "company_id": 2,
+        "company": "EPAM",
+        "position": "Junior .NET Developer",
+        "start": "2018-01-01",
+        "end": "2020-05-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 10,
+  "login": "maksym.boiko",
+  "password_hash": "96ccb7ee349d3b942bd80fba4de810545b7c09a31fc6ebc2f0c7fdda41312124",
+  "resume": {
+    "full_name": "Максим Бойко",
+    "birth_date": "1992-10-03",
+    "summary": "Максим шукає нову роль в IT.",
+    "city": {
+      "_id": 1,
+      "name": "Київ"
+    },
+    "hobbies": [
+      "біг",
+      "велоспорт",
+      "гітара",
+      "шахи"
+    ],
+    "experience": [
+      {
+        "company_id": 4,
+        "company": "Ciklum",
+        "position": "QA Engineer",
+        "start": "2020-08-01",
+        "end": "2021-10-01"
+      },
+      {
+        "company_id": 2,
+        "company": "EPAM",
+        "position": "Frontend Developer",
+        "start": "2021-10-01",
+        "end": "2024-12-01"
+      },
+      {
+        "company_id": 6,
+        "company": "N-iX",
+        "position": "Data Engineer",
+        "start": "2024-12-01",
+        "end": null
+      }
+    ]
+  }
+},
+{
+  "_id": 11,
+  "login": "tetiana.lysenko",
+  "password_hash": "4d6f05cfeaa2b19a39bbc459af350a396084dda8228dba71e2fa6e83cf9342e9",
+  "resume": {
+    "full_name": "Тетяна Лисенко",
+    "birth_date": "1999-09-15",
+    "summary": "Тетяна шукає нову роль в IT.",
+    "city": {
+      "_id": 1,
+      "name": "Київ"
+    },
+    "hobbies": [
+      "біг",
+      "фотографія"
+    ],
+    "experience": [
+      {
+        "company_id": 1,
+        "company": "SoftServe",
+        "position": "Middle .NET Developer",
+        "start": "2017-01-01",
+        "end": "2020-04-01"
+      },
+      {
+        "company_id": 1,
+        "company": "SoftServe",
+        "position": "Junior .NET Developer",
+        "start": "2020-04-01",
+        "end": "2023-04-01"
+      },
+      {
+        "company_id": 1,
+        "company": "SoftServe",
+        "position": "DevOps Engineer",
+        "start": "2023-04-01",
+        "end": null
+      }
+    ]
+  }
+},
+{
+  "_id": 12,
+  "login": "viktor.savchenko",
+  "password_hash": "23f29bb75628db335b29a8dcc1054e7224e52c71ae05995afc853cbab430604d",
+  "resume": {
+    "full_name": "Віктор Савченко",
+    "birth_date": "1992-05-22",
+    "summary": "Віктор шукає нову роль в IT.",
+    "city": {
+      "_id": 4,
+      "name": "Одеса"
+    },
+    "hobbies": [
+      "велоспорт",
+      "шахи"
+    ],
+    "experience": [
+      {
+        "company_id": 7,
+        "company": "MacPaw",
+        "position": "Project Manager",
+        "start": "2020-10-01",
+        "end": "2022-08-01"
+      },
+      {
+        "company_id": 4,
+        "company": "Ciklum",
+        "position": "Data Engineer",
+        "start": "2022-08-01",
+        "end": "2023-11-01"
+      },
+      {
+        "company_id": 4,
+        "company": "Ciklum",
+        "position": "Business Analyst",
+        "start": "2023-11-01",
+        "end": null
+      }
+    ]
+  }
+},
+{
+  "_id": 13,
+  "login": "anna.rudenko",
+  "password_hash": "08719afc78d177549467e2adfe979b757d6612679e606e1a993834f93fe649c4",
+  "resume": {
+    "full_name": "Анна Руденко",
+    "birth_date": "1986-11-21",
+    "summary": "Анна шукає нову роль в IT.",
+    "city": {
+      "_id": 6,
+      "name": "Івано-Франківськ"
+    },
+    "hobbies": [
+      "теніс",
+      "читання"
+    ],
+    "experience": [
+      {
+        "company_id": 4,
+        "company": "Ciklum",
+        "position": "Senior .NET Developer",
+        "start": "2020-06-01",
+        "end": "2021-09-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 14,
+  "login": "bohdan.moroz",
+  "password_hash": "5f459615a4086fb39d62aaab264cf9abbcfdc9f0e60900cd7910419057621ef1",
+  "resume": {
+    "full_name": "Богдан Мороз",
+    "birth_date": "1998-03-09",
+    "summary": "Богдан шукає нову роль в IT.",
+    "city": {
+      "_id": 4,
+      "name": "Одеса"
+    },
+    "hobbies": [
+      "біг",
+      "гітара"
+    ],
+    "experience": [
+      {
+        "company_id": 1,
+        "company": "SoftServe",
+        "position": "QA Engineer",
+        "start": "2019-02-01",
+        "end": "2022-01-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 15,
+  "login": "kateryna.pavlenko",
+  "password_hash": "80c3876e7db86a47e0b8cf60552177706d073620629a1693b3e2af1b687549b5",
+  "resume": {
+    "full_name": "Катерина Павленко",
+    "birth_date": "1990-07-16",
+    "summary": "Катерина шукає нову роль в IT.",
+    "city": {
+      "_id": 4,
+      "name": "Одеса"
+    },
+    "hobbies": [
+      "теніс",
+      "читання"
+    ],
+    "experience": [
+      {
+        "company_id": 3,
+        "company": "GlobalLogic",
+        "position": "Project Manager",
+        "start": "2016-07-01",
+        "end": "2018-08-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 16,
+  "login": "yevhen.honcharenko",
+  "password_hash": "08ecbc992a5b7b501ac7f52f74e02bf6ba5b446a98b6a0143db3e0495f5b0479",
+  "resume": {
+    "full_name": "Євген Гончаренко",
+    "birth_date": "2002-11-23",
+    "summary": "Євген шукає нову роль в IT.",
+    "city": {
+      "_id": 4,
+      "name": "Одеса"
+    },
+    "hobbies": [
+      "кулінарія",
+      "фотографія"
+    ],
+    "experience": [
+      {
+        "company_id": 3,
+        "company": "GlobalLogic",
+        "position": "Junior .NET Developer",
+        "start": "2016-01-01",
+        "end": "2019-12-01"
+      },
+      {
+        "company_id": 7,
+        "company": "MacPaw",
+        "position": "DevOps Engineer",
+        "start": "2019-12-01",
+        "end": "2020-09-01"
+      },
+      {
+        "company_id": 5,
+        "company": "Intellias",
+        "position": "Middle .NET Developer",
+        "start": "2020-09-01",
+        "end": "2021-01-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 17,
+  "login": "oksana.levchenko",
+  "password_hash": "d33df9d8dac2e13bef5640265f1cc1239c5b0c2b965e5c5123b1622597a28a27",
+  "resume": {
+    "full_name": "Оксана Левченко",
+    "birth_date": "1990-02-20",
+    "summary": "Оксана шукає нову роль в IT.",
+    "city": {
+      "_id": 1,
+      "name": "Київ"
+    },
+    "hobbies": [
+      "біг",
+      "кулінарія",
+      "фотографія",
+      "читання"
+    ],
+    "experience": [
+      {
+        "company_id": 6,
+        "company": "N-iX",
+        "position": "DevOps Engineer",
+        "start": "2016-10-01",
+        "end": "2017-07-01"
+      },
+      {
+        "company_id": 6,
+        "company": "N-iX",
+        "position": "Data Engineer",
+        "start": "2017-07-01",
+        "end": "2019-04-01"
+      },
+      {
+        "company_id": 4,
+        "company": "Ciklum",
+        "position": "Senior .NET Developer",
+        "start": "2019-04-01",
+        "end": "2020-05-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 18,
+  "login": "ihor.kuzmenko",
+  "password_hash": "ad6f1b635411b5ccb74145835db02be7b307777ed5cb38015e4e6e17735bc406",
+  "resume": {
+    "full_name": "Ігор Кузьменко",
+    "birth_date": "1994-08-11",
+    "summary": "Ігор шукає нову роль в IT.",
+    "city": {
+      "_id": 1,
+      "name": "Київ"
+    },
+    "hobbies": [
+      "біг",
+      "гітара"
+    ],
+    "experience": [
+      {
+        "company_id": 1,
+        "company": "SoftServe",
+        "position": "QA Engineer",
+        "start": "2015-09-01",
+        "end": "2018-06-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 19,
+  "login": "svitlana.marchenko",
+  "password_hash": "aa88dabd6db1cd3961a20e97b01ee92338a5d5dc0b0b34a1ca9539f214f6a018",
+  "resume": {
+    "full_name": "Світлана Марченко",
+    "birth_date": "1996-05-06",
+    "summary": "Світлана шукає нову роль в IT.",
+    "city": {
+      "_id": 4,
+      "name": "Одеса"
+    },
+    "hobbies": [
+      "велоспорт",
+      "кулінарія",
+      "подорожі",
+      "теніс"
+    ],
+    "experience": [
+      {
+        "company_id": 3,
+        "company": "GlobalLogic",
+        "position": "Middle .NET Developer",
+        "start": "2019-05-01",
+        "end": "2020-03-01"
+      },
+      {
+        "company_id": 3,
+        "company": "GlobalLogic",
+        "position": "Frontend Developer",
+        "start": "2020-03-01",
+        "end": "2021-03-01"
+      },
+      {
+        "company_id": 2,
+        "company": "EPAM",
+        "position": "Data Engineer",
+        "start": "2021-03-01",
+        "end": null
+      }
+    ]
+  }
+},
+{
+  "_id": 20,
+  "login": "taras.lytvynenko",
+  "password_hash": "609fb66fecb4d80850c69c78ffd95150b846a2ce76de0ff86908a689c2e2fe91",
+  "resume": {
+    "full_name": "Тарас Литвиненко",
+    "birth_date": "1991-11-21",
+    "summary": "Тарас шукає нову роль в IT.",
+    "city": {
+      "_id": 3,
+      "name": "Харків"
+    },
+    "hobbies": [
+      "гітара",
+      "кулінарія",
+      "настільні ігри",
+      "теніс"
+    ],
+    "experience": [
+      {
+        "company_id": 6,
+        "company": "N-iX",
+        "position": "Frontend Developer",
+        "start": "2020-07-01",
+        "end": "2021-03-01"
+      },
+      {
+        "company_id": 6,
+        "company": "N-iX",
+        "position": "Project Manager",
+        "start": "2021-03-01",
+        "end": "2022-09-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 21,
+  "login": "liudmyla.karpenko",
+  "password_hash": "4921d1a1aa5d44422b64d8cbd86ac9acd79f0afa4d41f9d0b7074751480696b3",
+  "resume": {
+    "full_name": "Людмила Карпенко",
+    "birth_date": "2002-01-04",
+    "summary": "Людмила шукає нову роль в IT.",
+    "city": {
+      "_id": 1,
+      "name": "Київ"
+    },
+    "hobbies": [
+      "велоспорт",
+      "теніс",
+      "читання",
+      "шахи"
+    ],
+    "experience": [
+      {
+        "company_id": 3,
+        "company": "GlobalLogic",
+        "position": "Data Engineer",
+        "start": "2017-10-01",
+        "end": "2018-01-01"
+      },
+      {
+        "company_id": 6,
+        "company": "N-iX",
+        "position": "QA Engineer",
+        "start": "2018-01-01",
+        "end": "2019-04-01"
+      },
+      {
+        "company_id": 3,
+        "company": "GlobalLogic",
+        "position": "DevOps Engineer",
+        "start": "2019-04-01",
+        "end": "2022-02-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 22,
+  "login": "roman.zakharchenko",
+  "password_hash": "a400c910a2d4f4cacc4636ca7c659a62468de2a1fd8d0d884d76d8314313a72d",
+  "resume": {
+    "full_name": "Роман Захарченко",
+    "birth_date": "1998-10-24",
+    "summary": "Роман шукає нову роль в IT.",
+    "city": {
+      "_id": 2,
+      "name": "Львів"
+    },
+    "hobbies": [
+      "настільні ігри",
+      "шахи"
+    ],
+    "experience": [
+      {
+        "company_id": 7,
+        "company": "MacPaw",
+        "position": "QA Engineer",
+        "start": "2018-01-01",
+        "end": "2021-07-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 23,
+  "login": "viktoriia.klymenko",
+  "password_hash": "123c3ed22011aff32b34c4652f654ddc39006573ff7c675f21ecf4729c9469ac",
+  "resume": {
+    "full_name": "Вікторія Клименко",
+    "birth_date": "1993-03-26",
+    "summary": "Вікторія шукає нову роль в IT.",
+    "city": {
+      "_id": 6,
+      "name": "Івано-Франківськ"
+    },
+    "hobbies": [
+      "теніс",
+      "читання"
+    ],
+    "experience": [
+      {
+        "company_id": 2,
+        "company": "EPAM",
+        "position": "Junior .NET Developer",
+        "start": "2018-04-01",
+        "end": "2020-04-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 24,
+  "login": "artem.sydorenko",
+  "password_hash": "7799798fbbd4379b03554b7ec738c6d1ed9871b3163bd8afb0f8baf67efe3f3e",
+  "resume": {
+    "full_name": "Артем Сидоренко",
+    "birth_date": "1991-07-11",
+    "summary": "Артем шукає нову роль в IT.",
+    "city": {
+      "_id": 3,
+      "name": "Харків"
+    },
+    "hobbies": [
+      "кулінарія",
+      "подорожі"
+    ],
+    "experience": [
+      {
+        "company_id": 3,
+        "company": "GlobalLogic",
+        "position": "Junior .NET Developer",
+        "start": "2020-09-01",
+        "end": "2023-09-01"
+      },
+      {
+        "company_id": 2,
+        "company": "EPAM",
+        "position": "Frontend Developer",
+        "start": "2023-09-01",
+        "end": "2024-05-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 25,
+  "login": "khrystyna.petrenko",
+  "password_hash": "7aad6913d51a52d7725e133481c8ae4af95c7cbdfe27485de54a381c8006158e",
+  "resume": {
+    "full_name": "Христина Петренко",
+    "birth_date": "1986-02-20",
+    "summary": "Христина шукає нову роль в IT.",
+    "city": {
+      "_id": 4,
+      "name": "Одеса"
+    },
+    "hobbies": [
+      "біг",
+      "подорожі",
+      "читання"
+    ],
+    "experience": [
+      {
+        "company_id": 1,
+        "company": "SoftServe",
+        "position": "DevOps Engineer",
+        "start": "2018-10-01",
+        "end": "2020-07-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 26,
+  "login": "vladyslav.ivanenko",
+  "password_hash": "663605f46594c70f408b5e524ba093363c62ba32b33b35258bace6a71a075d57",
+  "resume": {
+    "full_name": "Владислав Іваненко",
+    "birth_date": "2002-11-24",
+    "summary": "Владислав шукає нову роль в IT.",
+    "city": {
+      "_id": 6,
+      "name": "Івано-Франківськ"
+    },
+    "hobbies": [
+      "подорожі",
+      "теніс",
+      "фотографія",
+      "читання"
+    ],
+    "experience": [
+      {
+        "company_id": 6,
+        "company": "N-iX",
+        "position": "Frontend Developer",
+        "start": "2020-06-01",
+        "end": "2022-02-01"
+      },
+      {
+        "company_id": 4,
+        "company": "Ciklum",
+        "position": "Data Engineer",
+        "start": "2022-02-01",
+        "end": null
+      }
+    ]
+  }
+},
+{
+  "_id": 27,
+  "login": "sofiia.romanenko",
+  "password_hash": "649140d15bfd5022f79cfbbba8f89891b4322da62d98225b878d310a016ce5df",
+  "resume": {
+    "full_name": "Софія Романенко",
+    "birth_date": "1997-12-10",
+    "summary": "Софія шукає нову роль в IT.",
+    "city": {
+      "_id": 5,
+      "name": "Дніпро"
+    },
+    "hobbies": [
+      "фотографія",
+      "читання"
+    ],
+    "experience": [
+      {
+        "company_id": 5,
+        "company": "Intellias",
+        "position": "Frontend Developer",
+        "start": "2020-07-01",
+        "end": "2023-10-01"
+      },
+      {
+        "company_id": 3,
+        "company": "GlobalLogic",
+        "position": "Frontend Developer",
+        "start": "2023-10-01",
+        "end": "2025-01-01"
+      },
+      {
+        "company_id": 4,
+        "company": "Ciklum",
+        "position": "Data Engineer",
+        "start": "2025-01-01",
+        "end": null
+      }
+    ]
+  }
+},
+{
+  "_id": 28,
+  "login": "nazar.humeniuk",
+  "password_hash": "9d63166c098de17e78e1a7d55a85ff9c22a62ecd684072009a2c2d806998424a",
+  "resume": {
+    "full_name": "Назар Гуменюк",
+    "birth_date": "1999-08-15",
+    "summary": "Назар шукає нову роль в IT.",
+    "city": {
+      "_id": 6,
+      "name": "Івано-Франківськ"
+    },
+    "hobbies": [
+      "велоспорт",
+      "гітара"
+    ],
+    "experience": [
+      {
+        "company_id": 6,
+        "company": "N-iX",
+        "position": "Data Engineer",
+        "start": "2020-03-01",
+        "end": "2021-11-01"
+      },
+      {
+        "company_id": 6,
+        "company": "N-iX",
+        "position": "Frontend Developer",
+        "start": "2021-11-01",
+        "end": "2022-04-01"
+      },
+      {
+        "company_id": 2,
+        "company": "EPAM",
+        "position": "Junior .NET Developer",
+        "start": "2022-04-01",
+        "end": "2023-04-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 29,
+  "login": "daryna.yakovenko",
+  "password_hash": "1801ee98074fc4f8cd562169501920f9f29092cb90214070db894f397f3bb6be",
+  "resume": {
+    "full_name": "Дарина Яковенко",
+    "birth_date": "1986-04-16",
+    "summary": "Дарина шукає нову роль в IT.",
+    "city": {
+      "_id": 5,
+      "name": "Дніпро"
+    },
+    "hobbies": [
+      "гітара",
+      "читання"
+    ],
+    "experience": [
+      {
+        "company_id": 4,
+        "company": "Ciklum",
+        "position": "QA Engineer",
+        "start": "2020-10-01",
+        "end": "2023-08-01"
+      }
+    ]
+  }
+},
+{
+  "_id": 30,
+  "login": "pavlo.ostapchuk",
+  "password_hash": "374f081c82f7c999dc9671a86972f27ff886983b521d4dd9cfc5813804436c9a",
+  "resume": {
+    "full_name": "Павло Остапчук",
+    "birth_date": "1989-11-23",
+    "summary": "Павло шукає нову роль в IT.",
+    "city": {
+      "_id": 1,
+      "name": "Київ"
+    },
+    "hobbies": [
+      "фотографія",
+      "читання"
+    ],
+    "experience": [
+      {
+        "company_id": 7,
+        "company": "MacPaw",
+        "position": "Middle .NET Developer",
+        "start": "2016-12-01",
+        "end": "2018-04-01"
+      },
+      {
+        "company_id": 6,
+        "company": "N-iX",
+        "position": "DevOps Engineer",
+        "start": "2018-04-01",
+        "end": "2020-08-01"
+      },
+      {
+        "company_id": 3,
+        "company": "GlobalLogic",
+        "position": "Business Analyst",
+        "start": "2020-08-01",
+        "end": "2023-10-01"
+      }
+    ]
+  }
+}
+]);
